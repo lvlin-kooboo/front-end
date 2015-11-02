@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="Description" content=""/>
+		<meta name="Keywords" content="" />
+		<title></title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div class="top-bar clearfix">
+			<div class="top-follows"><span>关注：</span><!-- <a href="#" class="icon icon-wx"></a> --><a href="#" class="icon icon-wb"></a><!-- <a href="#" class="icon icon-tx"></a> --></div>
+			<div class="top-forum"><a href="#" class="link"><i class="icon icon-menu"></i>官方论坛</a></div>
+			<div class="mshare-more">
+				<div class="mshare-icon">
+					<img src="img/avatar.png">
+				</div>
+				<div class="mshare-msg">
+                  <h1>请关注“FA_GUN”公众号</h1>
+                  <p>搜索“FA_GUN”添加</p>
+					<a class="mshare-btn-back" href="javascript:void(0)"><span><i></i><em></em></span></a>
+				</div>
+			</div>
+		</div>
+		<div class="block-slot">
+			<a href="index.html" class="back">返回</a>
+			<div class="block-rules">
+				<span class="rule-title">活动规则</span>
+				<ol>
+					<li>1.输入手机号进行预约；</li>
+					<li>2.预约成功即可参与抽奖，每人1次机会；</li>
+					<li>3.活动奖品将在玩家获奖后10个工作日内发放；</li>
+					<li>4.最终解释权归官方所有。</li>
+				</ol>
+			</div>
+			<div class="form">
+				<div class="form-message fa-msg active">预约成功!</div>
+				<input type="text" id="phone" name="phone" placeholder="请输入手机号码" />
+				<div class="fieldset clearfix">
+					<input type="text" id="verify" name="verify" placeholder="验证码" class="short" />
+					<a href="#" class="get-code">获取验证码</a>
+				</div>
+				<a href="#" class="btn-submit">预约</a>
+			</div>
+			<div class="chance">您还有<span class="times">0</span>次抽奖机会</div>
+			<div class="award-message fa-msg">恭喜您获得一元话费</div>
+			<div id="lottery">
+				<ul>					
+					<li class="lottery-unit lottery-unit-0">
+						<img src="img/award1.png" alt="1元话费" class="award1" />
+					</li>
+					<li class="lottery-unit lottery-unit-1">
+						<img src="img/award2.png" alt="抱枕" class="award2" />
+						<span class="award-name">抱枕</span>
+					</li>
+					<li class="lottery-unit lottery-unit-2">
+						<span class="no-award">谢谢参与</span>
+					</li>
+					<li class="lottery-unit lottery-unit-3">
+						<img src="img/award1.png" alt="1元话费" class="award1" />
+					</li>
+					<li class="lottery-unit lottery-unit-4">
+						<img src="img/award4.png" alt="apple watch" class="award4" />
+					</li>
+					<li class="lottery-unit lottery-unit-5">
+						<img src="img/award1.png" alt="1元话费" class="award1" />
+					</li>
+					<li class="lottery-unit lottery-unit-6">
+						<span class="no-award">谢谢参与</span>
+					</li>
+					<li class="lottery-unit lottery-unit-7">
+						<img src="img/award3.png" alt="鼠标" class="award3" />
+					</li>
+					<li class="lottery-unit lottery-unit-8">
+						<a href="#" class="btn-slot"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pop pop-form">
+			<div class="pop-content">				
+				<div class="award-tip">亲爱的玩家，恭喜您获得了<span></span>，<br /> 请您填写信息</div>
+				<form action="" class="contact-form">
+					<div class="error-msg">提示区域</div>
+					<div class="fieldset">
+						<label for="username">姓名：</label><input type="text" id="username" name="username" />
+					</div>
+					<div class="fieldset">
+						<label for="phone2">电话：</label><input type="text" id="phone2" name="phone2" />
+					</div>
+					<div class="fieldset">
+						<label for="mail">邮编：</label><input type="text" id="mail" name="mail" />
+					</div>
+					<div class="fieldset">
+						<label for="addr">收件地址：</label><input type="text" id="addr" name="addr" />
+					</div>
+					<a href="#" class="btn btn-submit2">提交</a>
+				</form>
+			</div>
+		</div>
+		<div class="pop pop-tips">
+			<div class="pop-content">
+				<div class="text-field">您的信息已提交成功，<br />奖品将在10个工作日内发放，请耐心等待。</div>
+			</div>
+		</div>
+		<script src="js/zepto.js"></script>
+		<script>
+		var awardList = ['一元话费','抱枕','谢谢参与','一元话费','Apple watch','一元话费','谢谢参与','雷蛇鼠标'];
+
+		function checkAward(n) {
+			if(n== undefined) {
+				return;
+			}
+			function showAward(n) {
+				$('.award-tip').find('span').html(awardList[n]);
+				$('.pop-form').show();
+			}
+			switch (n) {
+				case 0:
+				case 3:
+				case 5:
+				$('.award-message').html('恭喜您获得一元话费').removeClass('fa-msg');
+				break;
+				case 1:
+				case 4:
+				case 7:
+					showAward(n);
+				break;
+
+				case 2:
+				case 6:
+				$('.award-message').html('谢谢参与').removeClass('fa-msg');
+				break;
+			}
+		}
+		var lottery={
+			index:-1,	//当前转动到哪个位置，起点位置
+			count:0,	//总共有多少个位置
+			timer:0,	//setTimeout的ID，用clearTimeout清除
+			speed:20,	//初始转动速度
+			times:0,	//转动次数
+			cycle:50,	//转动基本次数：即至少需要转动多少次再进入抽奖环节
+			prize:-1,	//中奖位置
+			init:function(id){
+				if ($("#"+id).find(".lottery-unit").length>0) {
+					$lottery = $("#"+id);
+					$units = $lottery.find(".lottery-unit");
+					this.obj = $lottery;
+					this.count = $units.length;
+					$lottery.find(".lottery-unit-"+this.index).addClass("active");
+				};
+			},
+			roll:function(){
+				var index = this.index;
+				var count = this.count;
+				var lottery = this.obj;
+				$(lottery).find(".lottery-unit-"+index).removeClass("active");
+				index += 1;
+				if (index>count-1) {
+					index = 0;
+				};
+				$(lottery).find(".lottery-unit-"+index).addClass("active");
+				this.index=index;
+				return false;
+			},
+			stop:function(index){
+				this.prize=index;
+				return false;
+			}
+		};
+
+		function roll(){
+			lottery.times += 1;
+			lottery.roll();
+			if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
+				clearTimeout(lottery.timer);
+				checkAward(lottery.prize);
+				lottery.prize=-1;
+				lottery.times=0;
+				click=false;
+			}else{
+				if (lottery.times<lottery.cycle) {
+					lottery.speed -= 10;
+				}else if(lottery.times==lottery.cycle) {
+					var index = Math.random()*(lottery.count)|0;
+					lottery.prize = index;		
+				}else{
+					if (lottery.times > lottery.cycle+10 && ((lottery.prize==0 && lottery.index==7) || lottery.prize==lottery.index+1)) {
+						lottery.speed += 110;
+					}else{
+						lottery.speed += 20;
+					}
+				}
+				if (lottery.speed<40) {
+					lottery.speed=40;
+				};
+				//console.log(lottery.times+'^^^^^^'+lottery.speed+'^^^^^^^'+lottery.prize);
+				lottery.timer = setTimeout(roll,lottery.speed);
+			}
+			return false;
+		}
+
+		var click=false;
+
+		window.onload=function(){
+			lottery.init('lottery');
+			// $("#lottery a").click(function(){
+			// 	if (click) {
+			// 		return false;
+			// 	}else{
+			// 		lottery.speed=100;
+			// 		roll();
+			// 		click=true;
+			// 		return false;
+			// 	}
+			// });
+			// weixin tips
+		    $(".icon-wx").click(function(){
+		      $(".mshare-more").show();
+		    });
+		    $(".mshare-btn-back").click(function(){
+		      $(".mshare-more").hide();
+		    });
+
+		    $('.btn-submit2').click(function() {
+		    	$('.pop-form').hide();
+		    	$('.pop-tips').show();
+		    })
+
+		    $('.pop-tips').on('click',function() {
+		    	$(this).hide();
+		    })
+
+		    $('.btn-submit').on('click',function(e) {
+		    	e.preventDefault();
+		    	// slotStart();
+		    	$('html,body').scrollTop($(window).height())
+		    })
+		    $("#lottery a").click(function(e){
+		    	e.preventDefault();
+		    	var t = $('.block-rules').height();
+		    	$('html,body').scrollTop(t);
+		    	$('#phone').focus();
+		    	// existCheck(true)
+		    })
+		    function slotStart() {
+		    	$('.award-message').addClass('fa-msg');
+		    	var t = $('#lottery').offset().top;
+		    	$('html,body').scrollTop(t);
+			    // $("#lottery a").click(function(){
+					if (click) {
+						return false;
+					}else{
+						lottery.speed=100;
+						roll();
+						click=true;
+						return false;
+					}
+				// });		    	
+		    }
+
+		    // user exist
+		    function existCheck(b,options) {
+		    	if(b) {
+		    		var options = options || {msg:'<p class="shake">您已抽奖完毕</p>'};
+		    		$('.award-message').html(options.msg).removeClass('fa-msg');
+		    	}
+		    }
+		};
+
+		</script>
+	</body>
+</html>
